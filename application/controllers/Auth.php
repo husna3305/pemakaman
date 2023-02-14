@@ -8,7 +8,7 @@ class Auth extends My_Controller
 		if (!logged_in()) redirect('auth/login');
 
 		// Redirect to your logged in landing page here
-		redirect('welcome');
+		redirect('dashboard');
 	}
 
 	/**
@@ -19,7 +19,7 @@ class Auth extends My_Controller
 	{
 
 		// send_json(random_id());
-		if (logged_in()) redirect('welcome');
+		if (logged_in()) redirect('dashboard');
 
 		$this->load->library('form_validation');
 		$this->load->helper('form');
@@ -28,7 +28,7 @@ class Auth extends My_Controller
 			if ($this->authit->login(set_value('email'), set_value('password'))) {
 				$response = [
 					'status' => 1,
-					'url' => site_url('welcome')
+					'url' => site_url('dashboard')
 				];
 			} else {
 				$response = ['status' => 0,'tipe'=>'danger','judul'=>'Peringatan', 'pesan' => msg_kombinasi_login_salah()];
@@ -115,7 +115,7 @@ class Auth extends My_Controller
 			if ($this->authit->signup(set_value('email'), set_value('password'))) {
 				$this->authit->login(set_value('email'), set_value('password'));
 
-				// Do some post signup stuff like send a welcome email...
+				// Do some post signup stuff like send a dashboard email...
 
 
 				// Redirect to your logged in landing page here
