@@ -35,9 +35,9 @@ class My_Controller extends CI_Controller
     $slug = get_slug();
     $akses = cekAkasesMenuBySlug($user->id_group, $slug, $link);
     if (count($akses) == 0) {
-      if ($slug != 'welcome') {
+      if ($slug != 'dashboard') {
         $this->session->set_flashdata(msg_no_access());
-        redirect('welcome');
+        redirect('dashboard');
       }
     }
     $data['user'] = $user;

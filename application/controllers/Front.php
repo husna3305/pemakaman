@@ -11,7 +11,7 @@ class Front extends My_Controller
 
   public function index()
   {
-		if (logged_in()) redirect('welcome');
+		if (logged_in()) redirect('dashboard');
     $data['title'] = $this->title;
     $data['file']  = '';
     $this->load->view('front/index');
